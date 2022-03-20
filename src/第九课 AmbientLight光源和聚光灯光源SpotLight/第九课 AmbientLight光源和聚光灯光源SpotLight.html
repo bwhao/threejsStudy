@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第九课 AmbientLight光源和聚光灯光源SpotLight</title>
+        <!-- 
+            AmbientLight是环境光，
+            1.均匀地照到场景中的所有物体，
+            2.不会产生阴影
+            new THREE.AmbientLight(0xaaaaa, 1); // 第一个参数是光照颜色，第二个参数是光照强度(默认值是1)
+            3.利用gui设置光照颜色和光照强度，注意在光照颜色的时候，利用gui添加一个颜色选器期addColor()， 
+            通过颜色选择后的回调函数，实现光照颜色变化 onChange();
+
+            SpotLight是聚光灯光源，是一种锥形效果的光源，和手电筒类似
+            1. 设置聚光灯，一定要设置聚光灯的位置属性值，不然不生效。
+            2.distance: 从光源发出光的最大距离
+            3.angle： 光线散射角度的属性
+            4. penumbra： 聚光锥的半影衰减百分比
+            5. decay
+
+            6.引入两个辅助类型，聚光灯辅助线和相机投影辅助线
+         -->
+        <meta charset="utf-8">
+        <script type="module" charset="UTF-8" src="../../libs/threejs/Three.js"></script>
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import {REVISION} from '../../libs/threejs/Three.js';
+            import * as THREE from '../../libs/threejs/Three.js';
+         /** 
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+            let orthCamera = new THREE.OrthographicCamera(window.innerWidth/-16, window.innerWidth/16,window.innerHeight/16,window.innerHeight/-16, -200, 500);
+
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // renderer.setClearColor(new THREE.Color(0x000000));
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(8,8,8);
+            let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            let cube = new THREE.Mesh(geometry, material);
+            
+            scene.add(cube);
+
+
+            camera.position.z=30;
+            camera.position.x= -30;
+            camera.position.y= 140;
+            camera.lookAt(scene.position);
+            /** 
+             * 渲染场景: 此处有动画处理
+            */
+           function aminate() {
+               requestAnimationFrame(aminate);
+               cube.rotation.x += 0.01;
+               cube.rotation.y += 0.01;
+               renderer.render(scene, camera); //真正渲染的例子
+           }
+            // aminate();
+            // cube.rotation.x += 0.8;
+            // cube.rotation.y += 0.8;
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes); 
+
+
+
+            /**  设置阴影效果 */
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            scene.add(plane);
+            //仅仅到这一步，地面是无法显示出来的，原因是地面材质是光照材质，需要光源。而立方体能显示，是因为它采用的是基础材质，不需要光源也可以显示
+            // 2.添加环境光-没有方向的光
+            let ambientLight = new THREE.AmbientLight(0xcccccc, 1);
+            // scene.add(ambientLight);
+            //  添加聚光灯
+            // let spotLight = new THREE.SpotLight(0xcccccc, 1);
+            let spotLight = new THREE.SpotLight(0xffffff);
+            spotLight.position.set(-60,30,-65); // 注意点：一定要设置聚光灯的位置属性值，不然不生效。
+            scene.add(spotLight);
+
+            const ctrls = new dat.GUI();
+            const ctrlObj = {
+                // 环境光
+                ambientLightIntensity: 1,
+                ambientLightColor: 0xcccccc,
+                // 聚光灯
+                spotIntensity: 3,
+                spotColor: 0xffffff,
+                spotDistance: 0,
+                spotAngle: Math.PI/3,
+                spotPenumbra: 0.2,
+                spotDecay: 2
+
+            }
+
+           let ambientFolder =  ctrls.addFolder('环境光');
+            // 环境光
+            ambientFolder.add(ctrlObj, 'ambientLightIntensity', 0,10);
+            // 注意添加函数addColor();
+            ambientFolder.addColor(ctrlObj, 'ambientLightColor').onChange(function(clr){ // 颜色变化的回调函数
+                ambientLight.color = new THREE.Color(clr); // 为什么需要再转化一下这个颜色呢？THREE 
+            });
+
+            let spotFolder =  ctrls.addFolder('聚光灯');
+            spotFolder.add(ctrlObj, 'spotIntensity', 0,10);
+            spotFolder.addColor(ctrlObj, 'spotColor').onChange(function(clr) {
+                spotLight.color = new THREE.Color(clr);
+            })
+            spotFolder.add(ctrlObj, 'spotDistance', 0,1000);
+            spotFolder.add(ctrlObj, 'spotAngle', 0, Math.PI*2);
+            spotFolder.add(ctrlObj, 'spotPenumbra', 0,1);
+            spotFolder.add(ctrlObj, 'spotDecay', 0, 5);
+
+            // 引入辅助类型
+            let spotHelper = new THREE.SpotLightHelper(spotLight);
+            let shadowCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera);
+            scene.add(spotHelper);
+            scene.add(shadowCameraHelper);
+
+
+            //移动立方体的位置，使得立方体不在某个轴上
+            cube.position.x= 0; 
+            cube.position.y= 10; 
+            cube.position.z= 0; 
+            // 设置投射显示为真
+            cube.castShadow = true;
+
+            // renderer.render(scene, camera); 
+
+            function renderScene() {
+                ambientLight.intensity = ctrlObj.ambientLightIntensity;
+
+                spotLight.intensity = ctrlObj.spotIntensity;
+                spotLight.distance = ctrlObj.spotDistance;
+                spotLight.angle = ctrlObj.spotAngle;
+                spotLight.penumbra = ctrlObj.spotPenumbra;
+                spotLight.decay = ctrlObj.spotDecay;
+
+
+
+                spotHelper.update();
+                shadowCameraHelper.update();
+
+
+                requestAnimationFrame(renderScene); // 要加这个才能跟随浏览器渲染，gui控制属性后，才能生效
+                renderer.render(scene, camera);
+            }
+            renderScene();
+
+        </script> 
+        
+    </body>
+</html>

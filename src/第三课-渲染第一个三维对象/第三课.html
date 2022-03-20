@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="第三课">第三课：渲染第一个三维对象</title>
+        <meta charset="utf-8">
+        <script type="module" charset="UTF-8" src="../../libs/threejs/Three.js"></script>
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script type="module">
+            import {REVISION} from '../../libs/threejs/Three.js';
+            import * as THREE from '../../libs/threejs/Three.js';
+         /** 
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(1,1,1,1);
+            let material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            let cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+            camera.position.z=5;
+            /** 
+             * 渲染场景: 此处有动画处理
+            */
+           function aminate() {
+               requestAnimationFrame(aminate);
+               cube.rotation.x += 0.01;
+               cube.rotation.y += 0.01;
+               renderer.render(scene, camera); //真正渲染的例子
+           }
+           aminate();
+          
+        </script>
+    </body>
+</html>

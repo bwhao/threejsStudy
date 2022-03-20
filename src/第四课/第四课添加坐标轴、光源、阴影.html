@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第四课：添加坐标轴、光源、阴影</title>
+        <meta charset="utf-8">
+        <script type="module" charset="UTF-8" src="../../libs/threejs/Three.js"></script>
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import {REVISION} from '../../libs/threejs/Three.js';
+            import * as THREE from '../../libs/threejs/Three.js';
+         /** 
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // renderer.setClearColor(new THREE.Color(0x000000));
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(8,8,8);
+            let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            let cube = new THREE.Mesh(geometry, material);
+            
+            scene.add(cube);
+
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+            camera.lookAt(scene.position);
+            /** 
+             * 渲染场景: 此处有动画处理
+            */
+           function aminate() {
+               requestAnimationFrame(aminate);
+               cube.rotation.x += 0.01;
+               cube.rotation.y += 0.01;
+               renderer.render(scene, camera); //真正渲染的例子
+           }
+            // aminate();
+            // cube.rotation.x += 0.8;
+            // cube.rotation.y += 0.8;
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes); 
+
+
+
+            /**  设置阴影效果 */
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            scene.add(plane);
+            //仅仅到这一步，地面是无法显示出来的，原因是地面材质是光照材质，需要光源。而立方体能显示，是因为它采用的是基础材质，不需要光源也可以显示
+            // 2.添加环境光-没有方向的光
+            let ambientLight = new THREE.AmbientLight(0xaaaaa);
+            scene.add(ambientLight);
+
+            // 3. 设置一个产生阴影的光源-聚光灯光源
+            let spotLight = new THREE.SpotLight(0xffffff);
+            spotLight.position.set(-60,40,-65);
+            //将聚光灯添加到场景中，此时，还没有阴影显示，需要设置显示阴影的属性。
+            spotLight.castShadow = true;
+            // 下面三行代码用于设置阴影效果
+            spotLight.shadow.mapSize = new THREE.Vector2(1024,1024);
+            spotLight.shadow.camera.far = 130;
+            spotLight.shadow.camera.near = 40;
+            
+            scene.add(spotLight);
+
+            // spotLight.shadow.mapSize.width = 512;  // default
+            // spotLight.shadow.mapSize.height = 512; // default
+            // spotLight.shadow.camera.near = 0.5;       // default
+            // spotLight.shadow.camera.far = 500    
+
+
+
+            //移动立方体的位置，使得立方体不在某个轴上
+            cube.position.x= 4; 
+            cube.position.y= 10; 
+            cube.position.z= 20; 
+            // 设置投射显示为真
+            cube.castShadow = true;
+
+
+            renderer.render(scene, camera); 
+        
+          
+        </script> 
+        
+    </body>
+</html>

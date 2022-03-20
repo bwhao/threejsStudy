@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第六课场景的基本方法和使用</title>
+             <!--  scene: 
+                1.查看场景中的对象 .children
+                2. 添加对象 .add(对象)
+                3. 查找对象按照名称： getObjectName('对象名称名称')，通过.name可以设置对象名称
+                4. 删除对象.remove() ;
+                5.traverse() 方法
+                6. fog属性：该属性可以为整个场景添加雾化效果，雾化就是场景中的物体离的越远，就会越模糊。
+             -->
+        <meta charset="utf-8">
+        <script type="module" charset="UTF-8" src="../../libs/threejs/Three.js"></script>
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+ 
+    <body>
+   
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <div id="myStats"></div>
+        <script type="module">
+            import {REVISION} from '../../libs/threejs/Three.js';
+            import * as THREE from '../../libs/threejs/Three.js';
+            import {Stats} from "../../libs/Stats/Stats.js"
+         /** 
+          * 创建场景
+         */
+       
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+
+            // scene.fog = new THREE.Fog(0xff0000, 0.03 ,100);
+            // scene.fog = new THREE.FogExp2(0x0000ff, 0.02 ,100);
+            scene.overrideMaterial = new THREE.MeshBasicMaterial({color: 0x0000ff});
+
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // renderer.setClearColor(new THREE.Color(0x000000));
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(8,8,8);
+            let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            let cube = new THREE.Mesh(geometry, material);
+            
+            
+            scene.add(cube);
+
+
+            // 创建第二个立方体
+            let geometry2 = new THREE.BoxGeometry(4,4,4);
+            let material2 = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            let cube2 = new THREE.Mesh(geometry2, material2);
+            cube2.position.x = -10;
+            cube2.position.y =10;
+            cube2.position.z = 10;
+           
+            cube2.name = 'onlyCube2'; // 设置唯一名称，可供查找时候使用
+            scene.add(cube2);
+
+            
+            let findObj = scene.getObjectByName('onlyCube2');
+            console.log(findObj == cube2); // 验证找到的东西是否相同
+
+            console.log(scene.children.length,  scene.children); // 查看场景中的添加的组件数量
+           
+           
+            // 删除对象
+            // function removeObj() {
+            //     if(findObj instanceof Mesh) {
+            //         scene.remove(findObj);
+            //     }
+            // }
+            // 利用gui界面删除/添加对象
+            let ctrlObj = new function(){
+                this.removeFindCube = function(){
+                    if(findObj instanceof THREE.Mesh){
+                        scene.remove(findObj);
+                    }
+
+                }
+                this.addFindCube = function(){
+                    console.log('添加');
+                    let geometryTemp = new THREE.BoxGeometry(5,5,5);
+                    let materialTemp = new THREE.MeshLambertMaterial({color: 0x0000ff});
+                    let cueTemp = new THREE.Mesh(geometryTemp, materialTemp);
+                    cueTemp.position.x = -Math.random()*10;
+                    cueTemp.position.y = Math.random()*10;
+                    cueTemp.position.z = Math.random()*10;
+                    scene.add(cueTemp);
+
+                }
+             }
+
+            let ctrls = new dat.GUI();
+            ctrls.add(ctrlObj, 'removeFindCube');
+            ctrls.add(ctrlObj, 'addFindCube');
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+            camera.lookAt(scene.position);
+            /** 
+             * 渲染场景: 此处有动画处理
+            */
+        //    function aminate() {
+        //        requestAnimationFrame(aminate);
+        //        cube.rotation.x += 0.01;
+        //        cube.rotation.y += 0.01;
+        //        renderer.render(scene, camera); //真正渲染的例子
+        //    }
+            // aminate();
+            // cube.rotation.x += 0.8;
+            // cube.rotation.y += 0.8;
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes); 
+
+
+
+            /**  设置阴影效果 */
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            scene.add(plane);
+            //仅仅到这一步，地面是无法显示出来的，原因是地面材质是光照材质，需要光源。而立方体能显示，是因为它采用的是基础材质，不需要光源也可以显示
+            // 2.添加环境光-没有方向的光
+            let ambientLight = new THREE.AmbientLight(0xaaaaa);
+            scene.add(ambientLight);
+
+            // 3. 设置一个产生阴影的光源-聚光灯光源
+            let spotLight = new THREE.SpotLight(0xffffff);
+            spotLight.position.set(-60,40,-65);
+            //将聚光灯添加到场景中，此时，还没有阴影显示，需要设置显示阴影的属性。
+            spotLight.castShadow = true;
+            // 下面三行代码用于设置阴影效果
+            spotLight.shadow.mapSize = new THREE.Vector2(1024,1024);
+            spotLight.shadow.camera.far = 130;
+            spotLight.shadow.camera.near = 40;
+            
+            scene.add(spotLight);
+
+            // spotLight.shadow.mapSize.width = 512;  // default
+            // spotLight.shadow.mapSize.height = 512; // default
+            // spotLight.shadow.camera.near = 0.5;       // default
+            // spotLight.shadow.camera.far = 500    
+
+
+
+            //移动立方体的位置，使得立方体不在某个轴上
+            cube.position.x= 4; 
+            cube.position.y= 10; 
+            cube.position.z= 20; 
+            // 设置投射显示为真
+            cube.castShadow = true;
+
+
+            // renderer.render(scene, camera); 
+
+           // 添加一个性能检测统计函数——本次需要检测浏览器的动画帧数，需要引入一个库
+            function addStats(){
+                let stats = new Stats();
+                console.log( stats.domElement);
+                stats.domElement.style.position = 'absolute';
+                stats.domElement.style.top = '0';
+                stats.domElement.style.left = '0';
+                stats.setMode(0); //因为要检测画面每秒传输的帧数
+                document.getElementById('myStats').appendChild(stats.domElement);
+                return stats
+            }
+            let stats = addStats(); // 渲染前调用函数，使得场景一开始就有了统计的功能
+
+
+            // // 使用dat.GUI库简化试验
+            // // 定义想通过gui库修改的变量
+            // const controls = {
+            //     rotationSpeed: 0.02,
+            //     bouncingSpeed: 0.02
+            // }
+            
+            // let gui = new dat.GUI();
+            // /** 这个对象传递给 dat.GUI对象，并定义这两个属性的取值范围，*/
+            // gui.add(controls, 'rotationSpeed', 0, 1);
+            // gui.add(controls, 'bouncingSpeed', 0, 1);
+
+
+            let gap = 0;
+            // 添加渲染函数
+            function renderScene() {
+                // 转动方块——改变的是rotation属性
+                cube.rotation.x += 0.01;  // 绕轴旋转
+                cube.rotation.y += 0.01;
+                cube.rotation.z += 0.01;
+                
+
+                // // 利用datGUI调试
+                // cube.rotation.x += controls.rotationSpeed;  // 绕轴旋转
+                // cube.rotation.y += controls.rotationSpeed;
+                // cube.rotation.z += controls.rotationSpeed;
+                
+                // cube2.rotation.x += 0.01;  // 绕轴旋转
+                // cube2.rotation.y += 0.01;
+                // cube2.rotation.z += 0.01;
+
+                // 如果将每个都单独设置太麻烦了，利用travese， traverse方法的参数是一个函数，被调用和每个后代对象都会调用该函数
+                scene.traverse( function(obj) {
+                    if(obj instanceof THREE.Mesh && obj != plane) {
+                        obj.rotation.x += 0.01;  // 绕轴旋转
+                        obj.rotation.y += 0.01;
+                        obj.rotation.z += 0.01;
+                    }
+
+                })
+
+
+                // 立方体的跳跃——改变的是postion属性，借助三角函数
+
+                gap += 0.03; // 代表弹跳速度
+
+                //  // 利用datGUI调试
+                // gap += controls.bouncingSpeed; // 代表弹跳速度
+
+                cube.position.x = 25 +(10*(Math.sin(gap)));
+                cube.position.y = 6 +(10*Math.abs(Math.cos(gap)));
+
+
+                stats.update(); // 告知stats对象，每次渲染开始的时间
+                requestAnimationFrame(renderScene);
+                renderer.render(scene,camera);
+            }
+            renderScene();
+            console.log(scene.children.length)
+            
+
+        window.addEventListener('resize', ()=>{
+            camera.aspect = window.innerWidth/window.innerHeight;
+            camera.updateProjectionMatrix (); // 更新投影矩阵
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }, false) 
+        
+        </script> 
+        
+    </body>
+</html>
