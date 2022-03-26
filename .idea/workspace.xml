@@ -11,387 +11,21 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e358481-1643-4a74-9754-12bafab7e991" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/Stats/Stats.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/dat.gui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/Three.Legacy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/Three.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/AnimationAction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/AnimationClip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/AnimationMixer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/AnimationObjectGroup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/AnimationUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/KeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/PropertyBinding.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/PropertyMixer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/BooleanKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/ColorKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/NumberKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/QuaternionKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/StringKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/animation/tracks/VectorKeyframeTrack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/audio/Audio.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/audio/AudioAnalyser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/audio/AudioContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/audio/AudioListener.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/audio/PositionalAudio.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/ArrayCamera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/Camera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/CubeCamera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/OrthographicCamera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/PerspectiveCamera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/cameras/StereoCamera.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/BufferAttribute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/BufferGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/Clock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/EventDispatcher.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/GLBufferAttribute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/InstancedBufferAttribute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/InstancedBufferGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/InstancedInterleavedBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/InterleavedBuffer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/InterleavedBufferAttribute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/Layers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/Object3D.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/Raycaster.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/core/Uniform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/DataUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/Earcut.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/ImageUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/PMREMGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/ShapeUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/Curve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/CurvePath.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/Interpolations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/Path.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/Shape.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/core/ShapePath.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/ArcCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/CatmullRomCurve3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/CubicBezierCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/CubicBezierCurve3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/Curves.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/EllipseCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/LineCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/LineCurve3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/QuadraticBezierCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/QuadraticBezierCurve3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/extras/curves/SplineCurve.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/BoxGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/CapsuleGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/CircleGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/ConeGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/CylinderGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/DodecahedronGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/EdgesGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/ExtrudeGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/Geometries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/IcosahedronGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/LatheGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/OctahedronGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/PlaneGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/PolyhedronGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/RingGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/ShapeGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/SphereGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/TetrahedronGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/TorusGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/TorusKnotGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/TubeGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/geometries/WireframeGeometry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/ArrowHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/AxesHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/Box3Helper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/BoxHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/CameraHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/DirectionalLightHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/GridHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/HemisphereLightHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/PlaneHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/PointLightHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/PolarGridHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/SkeletonHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/helpers/SpotLightHelper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/AmbientLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/AmbientLightProbe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/DirectionalLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/DirectionalLightShadow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/HemisphereLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/HemisphereLightProbe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/Light.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/LightProbe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/LightShadow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/PointLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/PointLightShadow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/RectAreaLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/SpotLight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/lights/SpotLightShadow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/AnimationLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/AudioLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/BufferGeometryLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/Cache.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/CompressedTextureLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/CubeTextureLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/DataTextureLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/FileLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/ImageBitmapLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/ImageLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/Loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/LoaderUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/LoadingManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/MaterialLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/ObjectLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/loaders/TextureLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/LineBasicMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/LineDashedMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/Material.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/Materials.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshBasicMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshDepthMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshDistanceMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshLambertMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshMatcapMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshNormalMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshPhongMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshPhysicalMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshStandardMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/MeshToonMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/PointsMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/RawShaderMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/ShaderMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/ShadowMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/materials/SpriteMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Box2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Box3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Color.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Cylindrical.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Euler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Frustum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Interpolant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Line3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/MathUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Matrix3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Matrix4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Plane.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Quaternion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Ray.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Sphere.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Spherical.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/SphericalHarmonics3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Triangle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Vector2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Vector3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/Vector4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/interpolants/CubicInterpolant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/interpolants/DiscreteInterpolant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/interpolants/LinearInterpolant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/math/interpolants/QuaternionLinearInterpolant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Bone.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/InstancedMesh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/LOD.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Line.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/LineLoop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/LineSegments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Mesh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Points.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Skeleton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/SkinnedMesh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/objects/Sprite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGL1Renderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGL3DRenderTarget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGLArrayRenderTarget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGLCubeRenderTarget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGLMultipleRenderTargets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGLRenderTarget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/WebGLRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/alphamap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/alphamap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/alphatest_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/alphatest_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/aomap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/aomap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/begin_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/beginnormal_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/bsdfs.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/bumpmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clearcoat_normal_fragment_begin.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clearcoat_normal_fragment_maps.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clearcoat_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clipping_planes_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clipping_planes_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clipping_planes_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/clipping_planes_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/color_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/color_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/color_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/color_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/common.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/cube_uv_reflection_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/default_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/default_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/defaultnormal_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/displacementmap_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/displacementmap_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/dithering_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/dithering_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/emissivemap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/emissivemap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/encodings_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/encodings_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_common_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_physical_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/envmap_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/fog_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/fog_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/fog_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/fog_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/gradientmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lightmap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lightmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_fragment_begin.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_fragment_end.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_fragment_maps.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_lambert_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_pars_begin.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_phong_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_phong_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_physical_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_physical_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_toon_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/lights_toon_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/logdepthbuf_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/logdepthbuf_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/logdepthbuf_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/logdepthbuf_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/map_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/map_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/map_particle_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/map_particle_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/metalnessmap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/metalnessmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/morphcolor_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/morphnormal_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/morphtarget_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/morphtarget_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normal_fragment_begin.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normal_fragment_maps.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normal_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normal_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normal_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/normalmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/output_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/packing.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/premultiplied_alpha_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/project_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/roughnessmap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/roughnessmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/shadowmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/shadowmap_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/shadowmap_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/shadowmask_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/skinbase_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/skinning_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/skinning_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/skinnormal_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/specularmap_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/specularmap_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/tonemapping_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/tonemapping_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/transmission_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/transmission_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv2_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv2_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv2_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv_pars_fragment.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv_pars_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/uv_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderChunk/worldpos_vertex.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/background.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/cube.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/depth.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/distanceRGBA.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/equirect.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/linedashed.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshbasic.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshlambert.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshmatcap.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshnormal.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshphong.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshphysical.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/meshtoon.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/points.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/shadow.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/sprite.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/ShaderLib/vsm.glsl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/UniformsLib.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/shaders/UniformsUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLAnimation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLAttributes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLBackground.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLBindingStates.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLBufferRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLCapabilities.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLClipping.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLCubeMaps.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLCubeUVMaps.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLExtensions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLGeometries.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLIndexedBufferRenderer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLLights.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLMaterials.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLMorphtargets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLObjects.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLProgram.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLPrograms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLProperties.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLRenderLists.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLRenderStates.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLShader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLShaderCache.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLShadowMap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLState.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLTextures.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLUniforms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webgl/WebGLUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webxr/WebXRController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/renderers/webxr/WebXRManager.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/scenes/Fog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/scenes/FogExp2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/scenes/Scene.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/CanvasTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/CompressedTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/CubeTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/Data3DTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/DataArrayTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/DataTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/DepthTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/FramebufferTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/Source.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/Texture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/textures/VideoTexture.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/threejs/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第七课 几何体和网格/几何体和网格.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第三课-渲染第一个三维对象/第三课.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第九课 AmbientLight光源和聚光灯光源SpotLight/第九课 AmbientLight光源和聚光灯光源SpotLight.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第二课/第二课.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第五课添加threejs动效、简化试验，自适应场景/第五课添加threejs动效、简化试验，自适应场景.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第八课 透视摄像机和正交投影摄像机/第八课 透视摄像机和正交投影摄像机.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第六课-场景的基本方法和使用/场景的基本方法和使用.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/第四课/第四课添加坐标轴、光源、阴影.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/build/three.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/build/three.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/build/three.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源/model/obj/untitled.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源/model/obj/untitled.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源/model/obj/veplchiqx_2K_Displacement.exr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源/model/untitled.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源/第十课 PointLight点光源和DirectionalLight平行光源.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,7 +33,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/libs/dat.gui" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
@@ -414,12 +48,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/第十课 PointLight点光源和DirectionalLight平行光源" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/libs/threejs" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -429,8 +70,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1647778411101</updated>
-      <workItem from="1647778412811" duration="685000" />
+      <workItem from="1647778412811" duration="11530000" />
+      <workItem from="1647909718167" duration="22476000" />
     </task>
+    <task id="LOCAL-00001" summary="基本认识">
+      <created>1647779271413</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647779271413</updated>
+    </task>
+    <task id="LOCAL-00002" summary="jsm">
+      <created>1647785004087</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647785004087</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +104,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -458,13 +115,50 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="基本认识" />
+    <MESSAGE value="jsm" />
+    <option name="LAST_COMMIT_MESSAGE" value="jsm" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="335" y="203" key="Vcs.Push.Dialog.v2" timestamp="1647778898531">
-      <screen x="0" y="23" width="1440" height="826" />
+    <state x="371" y="23" key="CommitChangelistDialog2" timestamp="1647785003476">
+      <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state x="410" y="146" key="Vcs.Push.Dialog.v2/0.23.1440.825@0.23.1440.825" timestamp="1647778558523" />
+    <state x="371" y="23" key="CommitChangelistDialog2/0.23.1440.825@0.23.1440.825" timestamp="1647785003476" />
+    <state x="682" y="220" key="FileChooserDialogImpl" timestamp="1647825715641">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="682" y="220" key="FileChooserDialogImpl/0.23.1440.822@0.23.1440.822" timestamp="1647825715641" />
+    <state x="241" y="153" key="Vcs.Push.Dialog.v2" timestamp="1647785013479">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state x="241" y="153" key="Vcs.Push.Dialog.v2/0.23.1440.825@0.23.1440.825" timestamp="1647785013479" />
     <state x="335" y="203" key="Vcs.Push.Dialog.v2/0.23.1440.826@0.23.1440.826" timestamp="1647778898531" />
+    <state x="266" y="123" width="1034" height="572" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1648172852152">
+      <screen x="0" y="23" width="1440" height="834" />
+    </state>
+    <state x="266" y="123" width="1034" height="572" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.834@0.23.1440.834" timestamp="1648172852152" />
+    <state x="532" y="213" width="724" height="490" key="find.popup" timestamp="1647825913390">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="532" y="213" width="724" height="490" key="find.popup/0.23.1440.822@0.23.1440.822" timestamp="1647825913390" />
     <state x="587" y="272" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1647778946638">
       <screen x="0" y="23" width="1440" height="826" />
     </state>
