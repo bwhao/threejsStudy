@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第十一课 半球光光源</title>
+        <!--
+           一、 半球光光源，
+            1.hemisphereLight能为室外场景创造更自然的光照
+            2. 三个参数：第一为天空中发出光线的颜色，第二为地面发出光线的颜色，第三个是光线强度，颜色都是默认白色
+
+           二、光源
+
+         -->
+        <meta charset="utf-8">
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import * as THREE from "../../libs/build/three.module.js"
+            import {GLTFLoader} from '../../libs/threejs/jsm/loaders/GLTFLoader.js';
+            import {OrbitControls} from "../../libs/threejs/jsm/controls/OrbitControls.js";
+
+            /**
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // renderer.setClearColor(new THREE.Color(0x000000));
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(8,8,8);
+            let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+            let cube = new THREE.Mesh(geometry, material);
+            
+            // scene.add(cube);
+
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+            camera.lookAt(scene.position);
+            /** 
+             * 渲染场景: 此处有动画处理
+            */
+           function aminate() {
+               requestAnimationFrame(aminate);
+               cube.rotation.x += 0.01;
+               cube.rotation.y += 0.01;
+               renderer.render(scene, camera); //真正渲染的例子
+           }
+            // aminate();
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes); 
+
+
+
+            /**  设置阴影效果 */
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            scene.add(plane);
+            //仅仅到这一步，地面是无法显示出来的，原因是地面材质是光照材质，需要光源。而立方体能显示，是因为它采用的是基础材质，不需要光源也可以显示
+
+            let ambientLight = new THREE.AmbientLight(0xaaaaa);
+            scene.add(ambientLight);
+
+            /***  1.添加点光源PointLight  */
+            let  pointLight = new THREE.PointLight(0xffffff, 6, 60); // 第三个参数是光源照射的长度
+            pointLight.position.set(0,0,5);
+            // scene.add(pointLight);
+
+            // 添加球体，体现点光源的特点
+            let sphereGeo = new THREE.SphereGeometry(0.3);
+            let sphereMaterial = new THREE.MeshBasicMaterial({
+                color: 0xff0000
+            });
+            let sphere = new THREE.Mesh(sphereGeo,sphereMaterial);
+            sphere.castShadow = true;
+            sphere.position.copy(pointLight.position); // 球体的位置采用点光源的位置
+            // scene.add(sphere);
+
+            // gui操作控制点光源的属性
+            const ctrlObj = {
+                pointColor: 0xffffff,
+                pointIntensity: 6,
+                pointDistance: 60,
+                pointDecay: 1,
+                pointVisible: true,
+
+
+                directColor: 0xffffff,
+                directIntensity:1,
+                directVisible: true,
+
+                //半球光源属性
+                skyColor: 0xffffff,
+                groundColor: 0xffffff,
+                hemisphereIntensity:1,
+                hemisphereVisible: true,
+            }
+            const ctrl = new dat.GUI();
+            const pointFolder = ctrl.addFolder('pointLight');
+            pointFolder.addColor(ctrlObj,'pointColor', 0xffffff).onChange(clr=>{
+                pointLight.color = new THREE.Color(clr);
+            })
+            pointFolder.add(ctrlObj, 'pointIntensity', 0,10).onChange(intensity=>{
+                pointLight.intensity = intensity;
+            })
+            pointFolder.add(ctrlObj, 'pointDistance', 0,1000).onChange(distance=>{
+                pointLight.distance = distance;
+            });
+            pointFolder.add(ctrlObj, 'pointDecay', 0,5).onChange(decay=>{
+                pointLight.decay = decay;
+            })
+            pointFolder.add(ctrlObj, 'pointVisible').onChange(e=>{
+                pointLight.visible = e;
+                sphere.visible = e;
+            })
+
+            /***  2.添加平行光源DirectLight **************  */
+
+            // 1去除场景内的其他光源
+            const directLight = new THREE.DirectionalLight({
+                color: 0xffffff
+            });
+            // scene.add(directLight)
+            // 2.增加轨道控制器-便于查看模型
+            let orbitControl = new OrbitControls(camera, renderer.domElement); // 一个是相机对象，一个是事件监听的html元素
+            orbitControl.update();
+            // 3.平行光源是可以产生阴影的-对模型和光源都进行阴影设置
+            directLight.castShadow = true;
+            directLight.shadow.mapSize.width= 2048;
+            directLight.shadow.mapSize.height = 2048;
+            directLight.position.set(100,100,100); // 设置平行光源的位置，不然阴影效果容易出不来。
+
+            // 4.为了看清光源的来源方向，增加平行光源辅助线
+            let directionalLightHelper = new THREE.DirectionalLightHelper(directLight);
+            // scene.add(directionalLightHelper)
+            directLight.position.set(30,30,30); // 调整平行光源的位置，让光源离物体近点。在页面上能看清光源起点
+
+
+            // 5.平行光源的gui设置
+            const directFolder = ctrl.addFolder('directLight');
+            directFolder.addColor(ctrlObj,'directColor', 0xffffff).onChange(clr=>{
+                directLight.color = new THREE.Color(clr);
+            })
+            directFolder.add(ctrlObj, 'directIntensity', 0,10).onChange(intensity=>{
+                directLight.intensity = intensity;
+            })
+            directFolder.add(ctrlObj, 'directVisible', 0,10).onChange(e=>{
+                directLight.visible = e;
+            })
+
+            // 6.target属性表示 平行光源的方向是从的它的位置到目标位置，默认的目标位置是原点(0,0,0)
+            // ——这就是模型器皿有阴影的条件之一，模型的位置没有设置，默认是(0,0,0),  所以平原光源的target属性刚好就是模型。
+            // 为了理解该属性，引入cameraHelper类， // 添加完成后可以看到平行光源的影响范围
+            let directCameraHelper = new THREE.CameraHelper(directLight.shadow.camera);
+            scene.add(directCameraHelper);
+
+            let targetGeometry = new THREE.BoxGeometry(4,4,4);
+            let targetMaterial = new THREE.MeshLambertMaterial({color: 0xff2288});
+            let targetCube = new THREE.Mesh(targetGeometry, targetMaterial);
+            targetCube.position.set(-10, 2, 10);
+            targetCube.castShadow = true;
+            scene.add(targetCube);
+            // directLight.target = targetCube; // 设置平行光的目标位置为这个正方体的位置
+
+            // 7.增加对比两种光源，增加光源可视性属性visible
+
+
+            /*************** 半球光光源  *************************/
+            let hemisphereLight = new THREE.HemisphereLight(0xffffff,0xff2288,1);
+            hemisphereLight.castShadow = true;
+            scene.add(hemisphereLight);
+            // gui操作控制光源的属性
+            let hemisphereFolder = ctrl.addFolder('hemisphereLight');
+            // 模型上不知道为何没生效
+            hemisphereFolder.addColor(ctrlObj, 'skyColor').onChange(e=>{
+                hemisphereLight.color = new THREE.Color(e);
+            })
+            hemisphereFolder.addColor(ctrlObj, 'groundColor').onChange(e=>{
+                hemisphereLight.groundColor = new THREE.Color(e);
+            })
+            hemisphereFolder.add(ctrlObj, 'hemisphereIntensity').onChange(e=>{
+                hemisphereLight.intensity = e;
+            })
+            hemisphereFolder.add(ctrlObj, 'hemisphereVisible').onChange(e=>{
+                hemisphereLight.visible = e;
+            })
+
+
+
+
+
+
+
+
+            //移动立方体的位置，使得立方体不在某个轴上
+            cube.position.x= 0; 
+            cube.position.y= 10; 
+            cube.position.z= 0; 
+            // 设置投射显示为真
+            cube.castShadow = true;
+
+            renderer.render(scene, camera);
+
+
+            loadModel();
+
+            /** 加载模型 */
+            function loadModel () {
+                let loader = new GLTFLoader();
+                loader.setPath('model/').load('untitled.glb',  function (gltfContent) {
+                    gltfContent.scene.scale.set(0.1,0.1,0.1);
+                    // 测试平行光源产生阴影
+                    gltfContent.scene.traverse(obj=>{ // 遍历模型里面的对象
+                        if(obj instanceof THREE.Mesh) { // 对于网格类型的对象设置可产生阴影属性
+                            obj.castShadow = true;
+                        }
+                    })
+                    scene.add(gltfContent.scene);
+                })
+            }
+
+
+            let pos = 0;
+            function renderScene() {
+                pos += 0.1;
+                pointLight.position.y =  Math.abs( Math.sin(pos)*20); // 点光源位置变动
+                sphere.position.copy(pointLight.position); // 体现在球体上
+
+                orbitControl.update()
+                requestAnimationFrame(renderScene); // 要加这个才能跟随浏览器渲染，gui控制属性后，才能生效
+                renderer.render(scene, camera);
+            }
+            renderScene();
+
+        </script> 
+        
+    </body>
+</html>
