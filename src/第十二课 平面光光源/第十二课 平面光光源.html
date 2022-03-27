@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第十二课 平面光光源</title>
+        <!--
+           一、 平面光光源，
+           1. 是从一个矩形平面上均匀的发射光源，这种光源主要应用场景用来模拟明亮的窗户和条状的灯光光源
+           2. 用于家居项目中较多
+           3.平面光光源的最大特点事不支持阴影
+           4.该光源支持的材质也很有限，只有MeshStandardMaterial和MeshPhysicalMaterial两种材质
+           二、使用：
+           1、引入RectAreaLightUniformsLib库，并调用init方法
+
+
+
+         -->
+        <meta charset="utf-8">
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import * as THREE from "../../libs/build/three.module.js"
+            import {GLTFLoader} from '../../libs/threejs/jsm/loaders/GLTFLoader.js';
+            import {OrbitControls} from "../../libs/threejs/jsm/controls/OrbitControls.js";
+            import { RectAreaLightHelper} from "../../libs/threejs/jsm/helpers/RectAreaLightHelper.js";
+            import { RectAreaLightUniformsLib} from "../../libs/threejs/jsm/lights/RectAreaLightUniformsLib.js";
+
+            /**
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // renderer.setClearColor(new THREE.Color(0x000000));
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+
+            camera.lookAt(scene.position);
+
+
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            // scene.add(plane);
+
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes);
+
+            // 增加轨道控制器-便于查看模型
+            let orbitControl = new OrbitControls(camera, renderer.domElement); // 一个是相机对象，一个是事件监听的html元素
+            orbitControl.update();
+
+            let ambientLight = new THREE.AmbientLight(0xaaaaa);
+            scene.add(ambientLight);
+
+            /************  平面光光源  ****************/
+            // 引入库
+            RectAreaLightUniformsLib.init(); // 似乎不引入该库也可以额
+
+            // 新建光源
+            let reactAreaLight = new THREE.RectAreaLight(0xffffff4,5, 4, 10);
+            reactAreaLight.position.set(0,0,0);
+            scene.add(reactAreaLight);
+
+            let rectPlaneGeometry = new THREE.BoxGeometry(2000,0.1,2000);
+            let rectPlaneMaterial = new THREE.MeshStandardMaterial({color:0xffffff, roughness: 0.2, metalness: 0});
+            let rectPlane = new THREE.Mesh(rectPlaneGeometry, rectPlaneMaterial);
+            scene.add(rectPlane);
+
+            let reactLightHelper = new RectAreaLightHelper(reactAreaLight);
+            scene.add(reactLightHelper); // 能清晰看到发出光源的形状和位置
+
+            let ctrObj = {
+                reactAreaColor:0xffffff,
+                reactAreaIntensity: 1
+            };
+            let ctrls = new dat.GUI;
+            let reactAreaLightFolder = ctrls.addFolder('reactAreaLight');
+            reactAreaLightFolder.addColor(ctrObj,'reactAreaColor').onChange(e=>{
+                reactAreaLight.color = new THREE.Color(e);
+            })
+            reactAreaLightFolder.add(ctrObj,'reactAreaIntensity', 0,10).onChange(e=>{
+                reactAreaLight.intensity = e;
+            })
+
+
+
+            function renderScene() {
+                orbitControl.update()
+                requestAnimationFrame(renderScene); // 要加这个才能跟随浏览器渲染，gui控制属性后，才能生效
+                renderer.render(scene, camera);
+            }
+            renderScene();
+
+        </script> 
+        
+    </body>
+</html>
