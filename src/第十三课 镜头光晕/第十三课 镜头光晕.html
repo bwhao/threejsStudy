@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第十三课 镜头光晕</title>
+        <!--
+        实现：通过Lensflare对象添加图像化的镜头光晕，了解LensflareElement对象各个参数变化效果的不同
+           一、 镜头光晕
+            1.当我们直接朝着太阳或者另一个非常明亮的光源拍照时就会出现镜头光晕效果（lens flare）。
+            2.使用 THREE.LensFlare 可以很方便地在场景中添加一个镜头光晕，这样会让场景看上去更加真实。
+            3.THREE.LensFlare 自身不会产生任何光照效果，也不会产生阴影
+            4. 每个光晕的效果都是通过LensflareElement对象组成的。
+            4. 属性介绍
+                texture：纹理。纹理就是一个图片，用来决定光晕的形状。
+                size：尺寸。可以指定光晕多大。这个尺寸的单位是像素。如果将它指定为 -1，那么将使用纹理本身的尺寸。
+                distance：距离。即从光源（0）到摄像机的距离。使用这个参数将镜头光晕放置在正确的位置。范围是0-1
+                blending：混合。我们我们可以为光晕提供多种材质。混合模式决定了如何将它们混合在一起。镜头光晕默认的混合方式是 THREE.AdditiveBlending。
+                color：光晕的颜色。
+
+         -->
+        <meta charset="utf-8">
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import * as THREE from "../../libs/build/three.module.js"
+            import {GLTFLoader} from '../../libs/threejs/jsm/loaders/GLTFLoader.js';
+            import {OrbitControls} from "../../libs/threejs/jsm/controls/OrbitControls.js";
+            import {Lensflare, LensflareElement} from "../../libs/threejs/jsm/objects/Lensflare.js";
+
+            /**
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+
+            document.body.appendChild(renderer.domElement);
+            console.log(scene)
+            // 2.创建一个立方体
+            let geometry = new THREE.BoxGeometry(8,8,8);
+            let material = new THREE.MeshLambertMaterial({color: 0x00ff00});
+
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+            camera.lookAt(scene.position);
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes); 
+
+
+
+            /**  设置阴影效果 */
+            //1.设置一个地面
+
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
+            let planeMaterial = new THREE.MeshLambertMaterial({color:0xcccccc}); //设置成亮灰色
+            let plane = new THREE.Mesh(planeGeometry,planeMaterial);
+
+            plane.rotation.x = -0.5*Math.PI; //沿着x轴向里旋转90度
+            plane.position.set(15,0,0);// 沿着x轴向里，其他不变
+
+            // 接受阴影设置为真
+            plane.receiveShadow = true;
+
+            scene.add(plane);
+            //仅仅到这一步，地面是无法显示出来的，原因是地面材质是光照材质，需要光源。而立方体能显示，是因为它采用的是基础材质，不需要光源也可以显示
+
+            let ambientLight = new THREE.AmbientLight(0xaaaaa);
+            scene.add(ambientLight)
+
+            // 增加轨道控制器-便于查看模型
+            let orbitControl = new OrbitControls(camera, renderer.domElement); // 一个是相机对象，一个是事件监听的html元素
+            orbitControl.update();
+            // 增加平行光光照，为了给模型增加阴影
+            let directLight = new THREE.DirectionalLight({color: 0xffffff});
+            directLight.castShadow = true;
+            directLight.shadow.mapSize.width= 2048;
+            directLight.shadow.mapSize.height = 2048;
+            directLight.position.set(30,30,30); // 调整平行光源的位置，让光源离物体近点。在页面上能看清光源起点
+            scene.add(directLight);
+
+            /*********  镜头光晕    *****/
+            // 1.加载纹理贴图
+            let textureLoader = new THREE.TextureLoader();
+            let lensTexture0 = textureLoader.load('textures/lensflare0.png');
+            let lensTexture1 = textureLoader.load('textures/lensflare1.png');
+
+            // 2.镜头光源对象添加多个LensflareElement对象，生成光源效果
+
+            let lensFlare = new Lensflare();
+            lensFlare.addElement(new LensflareElement(lensTexture0,500, 0));
+            lensFlare.addElement(new LensflareElement(lensTexture1, 30, 0.2));
+            // lensFlare.addElement(new LensflareElement(lensTexture1, 20, 0.1));
+            let lfElement3 = new LensflareElement(lensTexture1, 20, 0.2); // 方便gui控制效果
+            lensFlare.addElement(lfElement3);
+            directLight.add(lensFlare); // 将镜头光晕对象加到平行光源中，不然，不会出来光晕
+
+            // 利用gui控制光源属性
+            const ctrlObj = {
+                lfElementSize: 20,
+                lfElementDistance: 0.2,
+                lfElementColor: 0xff2288
+            }
+            let ctrls = new dat.GUI();
+            const lfElementFolder =  ctrls.addFolder('LenFlareElement');
+            lfElementFolder.add(ctrlObj, 'lfElementSize', 0,50).onChange(e=>{
+                lfElement3.size = e;
+            });
+            lfElementFolder.add(ctrlObj, 'lfElementDistance', 0,1).onChange(e=>{
+                lfElement3.distance = e;
+            });
+            lfElementFolder.addColor(ctrlObj, 'lfElementColor', 0,1).onChange(e=>{
+                lfElement3.color = new THREE.Color(e);
+            })
+
+
+            loadModel();
+
+            /** 加载模型 */
+            function loadModel () {
+                let loader = new GLTFLoader();
+                loader.setPath('model/').load('untitled.glb',  function (gltfContent) {
+                    gltfContent.scene.scale.set(0.1,0.1,0.1);
+                    // 测试平行光源产生阴影
+                    gltfContent.scene.traverse(obj=>{ // 遍历模型里面的对象
+                        if(obj instanceof THREE.Mesh) { // 对于网格类型的对象设置可产生阴影属性
+                            obj.castShadow = true;
+                        }
+                    })
+                    scene.add(gltfContent.scene);
+                })
+            }
+
+
+            function renderScene() {
+
+                orbitControl.update()
+                requestAnimationFrame(renderScene); // 要加这个才能跟随浏览器渲染，gui控制属性后，才能生效
+                renderer.render(scene, camera);
+            }
+            renderScene();
+
+        </script> 
+        
+    </body>
+</html>
