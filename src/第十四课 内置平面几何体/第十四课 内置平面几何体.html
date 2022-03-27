@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title >第十四课 内置平面几何体</title>
+        <!--
+        注意区分如下：
+        1.gui更该属性的时候注意怎么使得新属性值生效
+          第一、这些属性应用对象都是PlaneGeometry实例对象
+          第二、要用新值重新生成一个新的PlaneGeometry
+        2.单双面和线条是材质的属性
+         -->
+        <meta charset="utf-8">
+        <script src="../../libs/dat.gui/build/dat.gui.js"></script>
+
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="puiedu-webgl-output">
+
+        </div>
+        <script type="module">
+            import * as THREE from "../../libs/build/three.module.js"
+            import {OrbitControls} from "../../libs/threejs/jsm/controls/OrbitControls.js";
+
+            /**
+          * 创建场景
+         */
+            // 1.场景/相机/渲染器，并将渲染器添加到dom中
+            let scene = new THREE.Scene(); // 场景是一个容器，主要用于跟踪
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000);
+
+            
+            let renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            document.body.appendChild(renderer.domElement);
+
+
+            camera.position.z=35;
+            camera.position.x= -30;
+            camera.position.y= 40;
+            camera.lookAt(scene.position);
+
+           // 添加轴信息
+            const axes = new THREE.AxesHelper(50);
+            // axes.setColors(0x00fffff,0xffff00,0x00ff00); //设置轴颜色
+            scene.add(axes);
+
+
+            // 增加轨道控制器-便于查看模型
+            let orbitControl = new OrbitControls(camera, renderer.domElement); // 一个是相机对象，一个是事件监听的html元素
+            orbitControl.update();
+
+            //参数：宽，高，宽分段，高分段——可不设置。设置了化要配合材质的wireframe属性才能看出
+            const planeGeo = new THREE.PlaneGeometry(40, 60, 3,5);
+            const planeMaterial = new THREE.MeshBasicMaterial({color: 0xff2288});
+            const plane = new THREE.Mesh(planeGeo, planeMaterial);
+            plane.name = 'plane1';
+            scene.add(plane); // 这时候添加进入，通过orbitControl旋转到区域后面，会发现背面什么都没有，是因为材质默认是单面的。
+            // 可设置为材质为双面，旋转到背面即可看到
+            planeMaterial.side = THREE.DoubleSide;
+            // 设置平面正对相机
+            camera.position.x= 0;
+            camera.position.y= 10;
+            camera.position.z= 50 ;
+
+            // 设置几何面线条
+            planeMaterial.wireframe = true;// 设置宽高分段可看效果
+
+            // 利用gui设置属性
+            const ctrlObj = {
+                width: 40,
+                height: 60,
+                widthSegments: 4,
+                heightSegments: 6
+            }
+            let ctrls = new dat.GUI();
+            const planeFolder =  ctrls.addFolder('planeGeometry');
+            // 注意，怎么使得新属性值生效
+            // 这些属性应用对象都是PlaneGeometry实例对象，第二个要用新值重新生成一个新的PlaneGeometry
+            planeFolder.add(ctrlObj,'width', 0,200).onChange(e=>{
+                newPlane(e, ctrlObj.height, ctrlObj.widthSegments, ctrlObj.heightSegments);
+            });
+            planeFolder.add(ctrlObj,'height', 0,200).onChange(e=>{
+                newPlane(ctrlObj.width, e, ctrlObj.widthSegments, ctrlObj.heightSegments);
+            })
+
+            planeFolder.add(ctrlObj,'widthSegments', 0,10).onChange(e=>{
+                newPlane(ctrlObj.width, ctrlObj.height, e, ctrlObj.heightSegments);
+
+            });
+            planeFolder.add(ctrlObj,'heightSegments', 0,10).onChange(e=>{
+                newPlane(ctrlObj.width, ctrlObj.height, ctrlObj.widthSegments, e);
+            })
+
+            function newPlane (width,height, widthSegments, heightSegments) {
+                let targetPlane = scene.getObjectByName('plane1');
+                scene.remove(targetPlane);
+                const newPlaneGeo = new THREE.PlaneGeometry(width,height, widthSegments,heightSegments);
+                const plane = new THREE.Mesh(newPlaneGeo, planeMaterial);
+                plane.name = 'plane1';
+                scene.add(plane);
+            }
+
+            function renderScene() {
+
+                orbitControl.update()
+                requestAnimationFrame(renderScene); // 要加这个才能跟随浏览器渲染，gui控制属性后，才能生效
+                renderer.render(scene, camera);
+            }
+            renderScene();
+
+        </script> 
+        
+    </body>
+</html>
